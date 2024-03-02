@@ -16,6 +16,7 @@
     <properties>
         <java.version>17</java.version>
         <docker.image.prefix>ostock</docker.image.prefix>
+        <project.build.finalName>licensing-service</project.build.finalName>
     </properties>
     <dependencies>
         <dependency>
@@ -47,10 +48,6 @@
             <artifactId>spring-web</artifactId>
             <groupId>org.springframework</groupId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
@@ -74,29 +71,6 @@
                     <source>16</source>
                     <target>16</target>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.13</version>
-                <configuration>
-                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
-                    <tag>${project.version}</tag>
-                    <buildArgs>
-                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                    </buildArgs>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>build</goal>
-                            <goal>push</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
