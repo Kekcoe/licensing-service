@@ -39,21 +39,21 @@ public class LicenseController {
     }
 
     @PutMapping
-    public ResponseEntity<String> updateLicense(@PathVariable("organizationId") String organizationId,
+    public ResponseEntity<License> updateLicense(@PathVariable("organizationId") String organizationId,
                                                 @RequestBody License request,
                                                 @RequestHeader(value = "Accept-Language", required = false) Locale locale) {
-        return ResponseEntity.ok(licenseService.updateLicense(request, organizationId, locale));
+        return ResponseEntity.ok(licenseService.updateLicense(request));
     }
 
     @PostMapping
-    public ResponseEntity<String> createLicense(@PathVariable("organizationId") String organizationId,
+    public ResponseEntity<License> createLicense(@PathVariable("organizationId") String organizationId,
                                                 @RequestBody License request,
                                                 @RequestHeader(value = "Accept-Language", required = false) Locale locale) {
-        return ResponseEntity.ok(licenseService.createLicense(request, organizationId, locale));
+        return ResponseEntity.ok(licenseService.createLicense(request));
     }
 
     @DeleteMapping(value = "/{licenseId}")
     public ResponseEntity<String> deleteLicense(@PathVariable("organizationId") String organizationId, @PathVariable("licenseId") String licenseId) {
-        return ResponseEntity.ok(licenseService.deleteLicense(licenseId, organizationId));
+        return ResponseEntity.ok(licenseService.deleteLicense(licenseId));
     }
 }
