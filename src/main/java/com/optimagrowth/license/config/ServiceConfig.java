@@ -9,8 +9,12 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "example")
 @Getter
 @Setter
-public class ServiceConfig{
+public class ServiceConfig {
 
     private String property;
+
+    public String getProperty() {
+        return property;
+    }
 
 }

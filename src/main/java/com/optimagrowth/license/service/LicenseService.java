@@ -30,7 +30,7 @@ public class LicenseService {
                             "license.search.error.message", null, null),
                             licenseId, organizationId));
         }
-        return license;
+        return license.withComment(config.getProperty());
     }
 
     public License createLicense(License license){
